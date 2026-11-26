@@ -648,6 +648,84 @@ a.logo-badge:hover{box-shadow:0 0 0 3px var(--lime)}
 .pruebas span{background:color-mix(in srgb,#1240B8 12%,var(--surface));border:1px solid color-mix(in srgb,#1240B8 35%,var(--line));border-radius:999px;padding:7px 14px;font-weight:700}
 .pend{border:1px dashed var(--line);border-radius:14px;padding:14px 16px;color:var(--muted);font-size:.95rem}
 
+/* ===== Colores por sección y acabado más moderno ===== */
+:root{--bg:#F5F7FB;--line:#E1E7F0}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#07101E;--line:#1E3050}}
+:root[data-theme="dark"]{--bg:#07101E;--line:#1E3050}
+body{background:var(--bg)}
+/* Colores de cada sección */
+nav.tabs a[href="#inicio"]{--tc:#C6EE3A;--tci:#1A2300}
+nav.tabs a[href="#ef"],#v-ef,#v-primaria,#v-etapa{--tc:#12A36E;--tci:#fff;--secc:#12A36E;--secc2:#0A5A42}
+nav.tabs a[href="#deporte"],#v-deporte{--tc:#E5484D;--tci:#fff;--secc:#E5484D;--secc2:#9A1C2C}
+nav.tabs a[href="#juegos"],#v-juegos{--tc:#7652E0;--tci:#fff;--secc:#7652E0;--secc2:#3B2794}
+nav.tabs a[href="#patios"],#v-patios{--tc:#F0A202;--tci:#2A1A00;--secc:#D48A00;--secc2:#7A4A00}
+nav.tabs a[href="#citas"],#v-citas{--tc:#2F74E6;--tci:#fff;--secc:#2F74E6;--secc2:#0E2F78}
+nav.tabs a[href="#familias"],#v-familias{--tc:#F07A2E;--tci:#fff;--secc:#F07A2E;--secc2:#A23C08}
+nav.tabs a[href="#profe"],#v-profe{--tc:#8494AC;--tci:#fff;--secc:#56667E;--secc2:#243042}
+/* Menú: cristal translúcido, punto de color y pestaña activa con su color */
+header.top{background:color-mix(in srgb,var(--deep) 93%,transparent);-webkit-backdrop-filter:blur(14px) saturate(1.4);backdrop-filter:blur(14px) saturate(1.4)}
+nav.tabs a::before{content:"";display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--tc);margin-right:7px;vertical-align:1px;box-shadow:0 0 0 2px color-mix(in srgb,var(--tc) 25%,transparent)}
+nav.tabs a[aria-current="page"]{background:var(--tc);color:var(--tci);box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 6px 18px -8px var(--tc)}
+nav.tabs a[aria-current="page"]::before{background:currentColor;box-shadow:none}
+nav.tabs a.profe{border-color:var(--deep-line)}
+/* Cabeceras de sección con su color */
+.view .clhead{background:radial-gradient(120% 170% at 88% 0%,color-mix(in srgb,var(--secc,#123060) 92%,#fff),var(--secc2,var(--deep)) 72%)}
+.view .clhead .clsub,.view .clhead .eyebrow.on-deep{color:rgba(255,255,255,.86)}
+.view .clhead .etabs{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.18)}
+.view .clhead .etabs a{color:rgba(255,255,255,.85)}
+.view .clhead .etabs a[aria-current="page"]{background:#fff;color:var(--secc2,var(--deep))}
+.view .clhead .jump button{background:rgba(255,255,255,.12);border-color:rgba(255,255,255,.2)}
+.view .clhead .chips.big .chip-c{background:rgba(255,255,255,.12)}
+.view .clhead .chips.big .chip-c[aria-pressed="true"]{background:var(--c)}
+.view .clhead .propuesta{color:#fff;border-color:rgba(255,255,255,.7)}
+.view .clhead .seg{background:rgba(255,255,255,.14)}
+.view .clhead .seg button{color:rgba(255,255,255,.85)}
+.view .clhead .seg button[aria-pressed="true"]{background:#fff;color:var(--secc2,var(--deep))}
+/* Páginas sin cabecera: el primer título se convierte en una cabecera con su color */
+#v-deporte>.wrap>.sec:first-child,#v-familias>.wrap>.sec:first-child,#v-juegos>.wrap>.sec:first-child>.sec-head:first-child{background:radial-gradient(120% 170% at 88% 0%,color-mix(in srgb,var(--secc) 92%,#fff),var(--secc2) 72%);color:#fff;border-radius:24px;padding:26px 26px 24px;margin-top:24px;position:relative;overflow:hidden;box-shadow:0 18px 40px -24px var(--secc2)}
+#v-juegos>.wrap>.sec:first-child{padding-top:24px}
+#v-juegos>.wrap>.sec:first-child>.sec-head:first-child{margin-top:0;margin-bottom:16px}
+#v-deporte>.wrap>.sec:first-child .eyebrow,#v-familias>.wrap>.sec:first-child .eyebrow,#v-juegos .sec-head:first-child .eyebrow{color:rgba(255,255,255,.85)}
+#v-deporte>.wrap>.sec:first-child .lead,#v-familias>.wrap>.sec:first-child .lead,#v-juegos .sec-head:first-child p{color:rgba(255,255,255,.9)}
+#v-familias>.wrap>.sec:first-child .chip-c{background:rgba(255,255,255,.92);color:#0E2140}
+#v-familias>.wrap>.sec:first-child .chip-c[aria-pressed="true"]{background:var(--c);color:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.6)}
+#v-deporte>.wrap>.sec:first-child::after,#v-familias>.wrap>.sec:first-child::after,#v-juegos>.wrap>.sec:first-child>.sec-head:first-child::after,.view .clhead .wrap::after{content:"";position:absolute;right:-70px;top:-90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.18),rgba(255,255,255,0) 70%);pointer-events:none}
+.view .clhead .wrap{position:relative}
+/* Títulos y etiquetas dentro de cada sección con su color */
+.view[id] .sec-head .eyebrow,.view[id] .card>.eyebrow{color:color-mix(in srgb,var(--secc,var(--muted)) 85%,var(--ink))}
+/* Puertas de la portada: colores de su sección, sin rayas y con reflejo */
+.door{position:relative;overflow:hidden;border-radius:22px}
+.door::before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.38) 0%,rgba(255,255,255,.08) 28%,rgba(255,255,255,0) 45%);pointer-events:none;z-index:0}
+.door>*{position:relative;z-index:1}
+.door.ef{background:linear-gradient(135deg,#1BC285,#12A36E 55%,#0A7A53);color:#fff}
+.door.ef .dk,.door.ef .dd{color:rgba(255,255,255,.9)}
+.door.dep{background:linear-gradient(135deg,#FF6B6B,#E5484D 55%,#B42335)}
+.door.dep::after{display:none}
+.door.jg{background:linear-gradient(135deg,#9475F0,#7652E0 55%,#5534BE)}
+.door.fam{background:linear-gradient(135deg,#FF9A4D,#F07A2E 55%,#CF4B12)}
+.door{box-shadow:0 1px 2px rgba(14,33,64,.06),0 18px 34px -20px rgba(14,33,64,.45)}
+/* Banda de deporte de la portada: coral liso */
+.depband{background:radial-gradient(120% 170% at 88% 0%,#FF6B6B,#B42335 75%)}
+.depband::before{display:none}
+.depband .cgo,.depband .btn.lime{box-shadow:0 6px 16px -6px rgba(0,0,0,.35)}
+/* Tarjeta de Coleolimpiadas del calendario: azul liso */
+.feature{background:radial-gradient(120% 170% at 88% 0%,#3C86FF,#0E2F78 75%)}
+.feature::after{display:none}
+/* Tarjetas más limpias: esquinas más redondas, sombra suave y reflejo sutil al pasar */
+.card,.proj,.game,.stage-c,.hr,.ev,.tcard,.sa,.tm,.caja,.evsteps li,.wkday{border-radius:20px;border-color:var(--line);box-shadow:0 1px 2px rgba(14,33,64,.04),0 10px 28px -22px rgba(14,33,64,.35)}
+.proj,.game,.stage-c,.tcard,.sa{background-image:linear-gradient(160deg,color-mix(in srgb,var(--surface) 100%,transparent),var(--surface))}
+.proj:hover,button.game:hover,.stage-c:hover,.sa:hover,.tcard:hover{box-shadow:0 2px 4px rgba(14,33,64,.05),0 22px 40px -24px rgba(14,33,64,.45)}
+.btn{border-radius:14px}
+.btn.lime,.btn.primary{box-shadow:inset 0 1px 0 rgba(255,255,255,.35),0 8px 18px -10px rgba(14,33,64,.5)}
+.hreto,.reto,.ptnow,.cita{box-shadow:0 20px 44px -28px rgba(14,33,64,.6)}
+.hreto::before,.ptnow::before,.cita.dd::before{content:"";position:absolute;inset:0;background:linear-gradient(125deg,rgba(255,255,255,.22),rgba(255,255,255,0) 40%);pointer-events:none;z-index:0}
+
+.cdown{display:flex;align-items:center;gap:12px;justify-self:start;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.25);border-radius:18px;padding:8px 18px 8px 14px;margin-top:4px}
+.cdown b{font-family:var(--f-display);font-weight:800;font-size:clamp(2.8rem,6vw,4rem);line-height:.9;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.cdown span{font-family:var(--f-display);font-weight:700;font-size:1rem;line-height:1.1;text-transform:uppercase;letter-spacing:.06em;opacity:.95}
+.evdate .cdown{margin-top:0}
+.cita .cdate{font-size:1.05rem}
+
 footer{margin-top:56px;background:var(--deep);color:var(--on-deep-dim)}
 footer .tileband{border-radius:0;height:16px}
 footer .wrap{padding-block:26px;display:grid;gap:16px;grid-template-columns:1fr;font-size:.88rem}
@@ -1597,7 +1675,7 @@ function renderStages(){
   $('#priProf').textContent=`De 1º a 6º · Profesor: ${ETAPAS.primaria.prof}`;
 }
 function renderEtapa(k){
-  const e=ETAPAS[k];$('#v-etapa').style.setProperty('--sc',e.sc);
+  const e=ETAPAS[k];const V=$('#v-etapa');V.style.setProperty('--sc',e.sc);const EC={infantil:['#E39E00','#7A4A00'],eso:['#1F7FD0','#0B3270']}[k]||['#12A36E','#0A5A42'];V.style.setProperty('--secc',EC[0]);V.style.setProperty('--secc2',EC[1]);const efA=$('nav.tabs a[href="#ef"]');if(efA)efA.style.setProperty('--tc',EC[0]);
   $('#etEy').textContent=`${e.area} · ${e.edad}`;$('#etH').textContent=e.n;$('#etSub').textContent=`${e.cursos} · Profesor: ${e.prof}`;
   $('#etBody').innerHTML=`<div class="soon" style="--sc:${e.sc}"><div class="card"><div class="eyebrow">Qué se trabaja en ${e.n}</div><h3 style="font-size:1.4rem;margin:6px 0 8px">${esc(e.d)}</h3><div class="chipsrow">${(e.temas||[]).map(t=>`<span>${esc(t)}</span>`).join('')}</div></div>
   <div class="card" style="display:grid;gap:10px;align-content:start"><div class="eyebrow">Próximamente</div><h3 style="font-size:1.25rem">Estamos preparando esta sección</h3><p class="muted">Pronto encontrarás aquí lo que se hace en ${e.area==='Psicomotricidad'?'Psicomotricidad':'Educación Física'} en ${e.n}: sus retos, su calendario y sus juegos, como ya puedes ver en Primaria.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn primary" href="#primaria">Ver Primaria</a><a class="btn" href="#deporte">Deporte en el cole</a></div></div></div>`;
@@ -1698,7 +1776,7 @@ $('#v-patios').addEventListener('click',e=>{const f=e.target.closest('[data-pf]'
 /* ---------- GRANDES CITAS ----------
    Para completar cuando se sepa: fecha ('2027-04-23'), lugar, programa [{h:'09:00',t:'Bienvenida en el patio'}] y actividades por etapa. */
 const CITAS={
-  dd:{n:'Día del Deporte',k:'Todo el cole',hash:'dia-deporte',fecha:'2027-02-12',lugar:'Col·legi Santiago Apòstol y Zona Santiago',
+  dd:{n:'Día del Deporte',k:'Todo el cole',hash:'dia-deporte',fecha:'2027-02-12',lugar:'',
     d:'Un día oficial en el que todo el colegio, de Infantil al Grado Básico, celebra el deporte.',
     programa:[],etapas:{infantil:'',primaria:'',eso:''}},
   co:{n:'Coleolimpiadas',k:'6º de Primaria · Colegios Diocesanos',hash:'coleolimpiadas',fecha:null,lugar:'Pistas de atletismo del río Turia',
@@ -1707,9 +1785,10 @@ const CITAS={
 const fechaTxt=c=>c.fecha?cap(longD(parse(c.fecha))):'Fecha por confirmar';
 const faltan=c=>{if(!c.fecha)return '';const n=dd(TODAY,c.fecha);return n>1?`<b>${n}</b>días`:n===1?'<b>¡Mañana!</b>':n===0?'<b>¡Hoy!</b>':'Ya lo celebramos'};
 function renderCitas(){
-  const card=(key)=>{const c=CITAS[key];return `<a class="cita ${key}" href="#${c.hash}"><span class="ck">${esc(c.k)}</span><h3>${esc(c.n)}</h3><p>${esc(c.d)}</p><span class="cdate">${c.fecha?faltan(c):''}<span>${esc(fechaTxt(c))} · ${esc(c.lugar)}</span></span><span class="cgo">Ver toda la información →</span></a>`};
+  const cdown=c=>{const n=dd(TODAY,c.fecha);return n>0?`<div class="cdown"><b>${n}</b><span>${n===1?'día':'días'}<br>restantes</span></div>`:n===0?'<div class="cdown"><b>¡Hoy!</b></div>':''};
+  const card=(key)=>{const c=CITAS[key];return `<a class="cita ${key}" href="#${c.hash}"><span class="ck">${esc(c.k)}</span><h3>${esc(c.n)}</h3><p>${esc(c.d)}</p>${c.fecha?cdown(c):''}<span class="cdate"><span>${esc(fechaTxt(c))}${c.lugar?' · '+esc(c.lugar):''}</span></span><span class="cgo">Ver toda la información →</span></a>`};
   const h=card('dd')+card('co');$('#citasHome').innerHTML=h;$('#citasAll').innerHTML=h;
-  ['dd','co'].forEach(k=>{const c=CITAS[k];$('#'+k+'Date').innerHTML=`<span class="dchip">${c.fecha?faltan(c)+' · ':''}${esc(fechaTxt(c))}</span><span class="dchip">${esc(c.lugar)}</span>`});
+  ['dd','co'].forEach(k=>{const c=CITAS[k];$('#'+k+'Date').innerHTML=`${c.fecha?cdown(c):''}<span class="dchip">${esc(fechaTxt(c))}</span>${c.lugar?`<span class="dchip">${esc(c.lugar)}</span>`:''}`});
   const D=CITAS.dd;
   $('#ddProg').innerHTML=D.programa.length?`<div class="evlist">${D.programa.map(x=>`<div class="ev"><div class="d"><b style="font-size:1.1rem">${esc(x.h)}</b></div><div style="min-width:0"><h4>${esc(x.t)}</h4></div><div></div></div>`).join('')}</div>`:'<div class="pend">El programa se publicará aquí cuando se acerque la fecha: llegada, actividades de cada etapa y clausura.</div>';
   $('#ddEtapas').innerHTML=Object.entries(ETAPAS).map(([k,e])=>`<div class="boxrow" style="--cc:${e.sc}"><span class="bx" style="font-size:.9rem">${e.n.slice(0,1)}</span><div><b>${esc(e.n)}</b><p class="muted" style="font-size:.92rem">${esc(D.etapas[k]||'Actividades por concretar con '+e.prof+'.')}</p></div></div>`).join('');
@@ -1765,7 +1844,7 @@ $$('[data-sm]').forEach(b=>b.onclick=()=>{sm=b.dataset.sm;$$('[data-sm]').forEac
 
 /* ---------- ROUTER ---------- */
 const VIEWS=['inicio','ef','primaria','deporte','juegos','patios','citas','dia-deporte','coleolimpiadas','familias','profe'];const ALIAS={fpb:'eso',cfgb:'eso',clases:'primaria',semana:'primaria',calendario:'primaria',aula:'profe',programacion:'profe'};
-function route(){let h=location.hash.slice(1);if(ALIAS[h])h=ALIAS[h];let v=VIEWS.includes(h)?h:'inicio';if(ETAPAS[h]&&h!=='primaria'){v='etapa';renderEtapa(h)}const nv=(v==='primaria'||v==='etapa')?'ef':(v==='dia-deporte'||v==='coleolimpiadas')?'citas':v;$$('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$$('nav.tabs a').forEach(a=>{if(a.getAttribute('href')==='#'+nv)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});$$('.etabs a').forEach(a=>{if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(VIEWS.includes(h)||ETAPAS[h])window.scrollTo({top:0})}
+function route(){$('nav.tabs a[href="#ef"]')?.style.removeProperty('--tc');let h=location.hash.slice(1);if(ALIAS[h])h=ALIAS[h];let v=VIEWS.includes(h)?h:'inicio';if(ETAPAS[h]&&h!=='primaria'){v='etapa';renderEtapa(h)}const nv=(v==='primaria'||v==='etapa')?'ef':(v==='dia-deporte'||v==='coleolimpiadas')?'citas':v;$$('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$$('nav.tabs a').forEach(a=>{if(a.getAttribute('href')==='#'+nv)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});$$('.etabs a').forEach(a=>{if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(VIEWS.includes(h)||ETAPAS[h])window.scrollTo({top:0})}
 window.addEventListener('hashchange',route);
 function renderCourse(skipGames){stCap();renderReto();renderProg();renderFam();renderWeek();renderCal();if(!skipGames&&!gAll)renderGames()}
 renderDeporte();renderStages();renderHR();renderPatios();renderCitas();drawStadium();renderNow();renderEvHome();renderMatrix();renderWeights();renderMet();renderDiv();renderGames();renderCourse();
