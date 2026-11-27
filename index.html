@@ -745,13 +745,21 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
 .exbar{background:var(--lime);color:var(--lime-ink);font-size:.9rem;font-weight:700;text-align:center;padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
 .exbar a{color:inherit;margin-left:8px}
 /* ---- imágenes ---- */
-.photos{display:grid;gap:12px;grid-template-columns:1.4fr 1fr 1fr;margin-top:44px}
-.ph{position:relative;margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:var(--sunk);max-width:100%}
-.photos .ph{aspect-ratio:auto;height:clamp(170px,20vw,250px)}
+.photos{display:grid;gap:14px;grid-template-columns:1fr 1.35fr 1fr;margin-top:44px;align-items:center}
+.ph{position:relative;display:block;margin:0;border-radius:22px;overflow:hidden;background:var(--sunk);max-width:100%;text-decoration:none;color:#fff;box-shadow:var(--shadow);transition:transform .2s}
+.ph:hover{transform:translateY(-3px)}
+.ph:focus-visible{outline:3px solid var(--lime);outline-offset:3px}
+.ph .phc{position:absolute;left:12px;right:12px;bottom:12px;display:grid;gap:2px;background:rgba(14,33,64,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:10px 14px;border-radius:14px}
+.ph .phc b{font-family:var(--f-display);font-weight:800;font-size:1.1rem;line-height:1.1}
+.ph .phc small{font-size:.82rem;opacity:.85}
+.ph.hl .phc{background:rgba(6,70,44,.78)}
+.ph.hl .phc b{font-size:1.5rem}
+.photos .ph{height:clamp(180px,20vw,250px)}
+.photos .ph.hl{height:clamp(230px,27vw,330px)}
 .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
 .ph:hover img{transform:scale(1.03)}
 .ph figcaption{position:absolute;left:12px;bottom:12px;background:rgba(14,33,64,.72);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700}
-@media (max-width:760px){.photos{grid-template-columns:1fr 1fr}.photos .ph{height:150px}.photos .ph:first-child{grid-column:1/-1;height:190px}}
+@media (max-width:760px){.photos{grid-template-columns:1fr 1fr}.photos .ph{height:160px}.photos .ph.hl{grid-column:1/-1;order:-1;height:220px}}
 .banner-ph{border-radius:22px;overflow:hidden;height:clamp(150px,18vw,220px);max-width:100%;margin:0}
 .banner-ph img{width:100%;height:100%;object-fit:cover;display:block}
 
@@ -823,9 +831,9 @@ details.proj[open]{box-shadow:var(--shadow)}
     </div>
 
     <div class="photos" aria-label="Imágenes">
-      <figure class="ph"><img src="img/cancha.svg" alt="Ilustración de la pista de la Zona Santiago"><figcaption>Zona Santiago</figcaption></figure>
-      <figure class="ph"><img src="img/patio.svg" alt="Ilustración de juegos en el patio"><figcaption>Patios activos</figcaption></figure>
-      <figure class="ph"><img src="img/pista.svg" alt="Ilustración de una pista de atletismo"><figcaption>Coleolimpiadas</figcaption></figure>
+      <a class="ph" href="https://www.santiagoapostolcabanyal.es/blog/zona-santiago-centro-cultural-y-deportivo-abierto-al-barrio/" target="_blank" rel="noopener"><img src="img/cancha.svg" alt=""><span class="phc"><b>Zona Santiago</b><small>Centro deportivo del barrio ↗</small></span></a>
+      <a class="ph hl" href="https://www.santiagoapostolcabanyal.es/proyecto-healthy/" target="_blank" rel="noopener"><img src="img/healthy.svg" alt=""><span class="phc"><b>Proyecto Healthy</b><small>Salud, alimentación y ejercicio ↗</small></span></a>
+      <a class="ph" href="#patios"><img src="img/patio.svg" alt=""><span class="phc"><b>Patios activos</b><small>Juegos en el recreo →</small></span></a>
     </div>
 
     <div class="sec only-full">
