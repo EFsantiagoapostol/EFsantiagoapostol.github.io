@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" preserveAspectRatio="xMidYMid slice">
+<defs><linearGradient id="s" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFD9A8"/><stop offset=".6" stop-color="#F7B57A"/></linearGradient>
+<linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2E9E6B"/><stop offset="1" stop-color="#16774E"/></linearGradient></defs>
+<rect width="1200" height="700" fill="url(#s)"/>
+<circle cx="930" cy="170" r="70" fill="#FFF3DE" opacity=".9"/>
+<path d="M0 300 C200 270 420 285 600 280 C800 274 1000 262 1200 290 V700 H0Z" fill="#7FB8A2" opacity=".55"/>
+<g fill="#5E8F7E" opacity=".7"><rect x="80" y="230" width="14" height="70" rx="7"/><circle cx="87" cy="225" r="34"/><rect x="190" y="240" width="12" height="60" rx="6"/><circle cx="196" cy="236" r="28"/><rect x="1040" y="232" width="14" height="66" rx="7"/><circle cx="1047" cy="226" r="36"/></g>
+<path d="M0 330 H1200 V700 H0Z" fill="url(#g)"/>
+<g transform="translate(600 760)">
+<ellipse rx="900" ry="410" fill="#C4513A"/>
+<g fill="none" stroke="#FFF" stroke-width="4" opacity=".85">
+<ellipse rx="860" ry="380"/><ellipse rx="820" ry="350"/><ellipse rx="780" ry="320"/><ellipse rx="740" ry="290"/><ellipse rx="700" ry="262"/></g>
+<ellipse rx="660" ry="232" fill="#2E9E6B"/>
+</g>
+<g stroke="#FFF" stroke-width="5" opacity=".9"><path d="M170 520 L120 700"/><path d="M1030 520 L1080 700"/></g>
+<g font-family="Arial Black,Arial,sans-serif" font-weight="900" font-size="34" fill="#FFF" opacity=".9" text-anchor="middle"><text x="268" y="690">1</text><text x="350" y="690">2</text><text x="432" y="690">3</text></g>
+</svg>

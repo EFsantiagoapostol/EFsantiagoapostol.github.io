@@ -6,6 +6,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
 <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
 <meta name="theme-color" content="#0E2140">
+<script>window.EF_FULL=/[?&]ejemplo(=|&|$)/.test(location.search);document.documentElement.className+=EF_FULL?' full':' solo';</script>
 <meta name="description" content="Educación Física y deporte en el Col·legi Diocesà Santiago Apòstol del Cabanyal: clases, juegos, patios activos y grandes citas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -711,6 +712,7 @@ nav.tabs a.profe{border-color:var(--deep-line)}
 /* Banda de deporte de la portada: coral liso */
 .depband{background:radial-gradient(120% 170% at 88% 0%,#FF6B6B,#B42335 75%)}
 .depband::before{display:none}
+.depband .eyebrow{color:rgba(255,255,255,.85)!important}
 .depband .cgo,.depband .btn.lime{box-shadow:0 6px 16px -6px rgba(0,0,0,.35)}
 /* Tarjeta de Coleolimpiadas del calendario: azul liso */
 .feature{background:radial-gradient(120% 170% at 88% 0%,#3C86FF,#0E2F78 75%)}
@@ -737,8 +739,47 @@ footer .wrap{padding-block:26px;display:grid;gap:16px;grid-template-columns:1fr;
 footer b{color:var(--on-deep);font-family:var(--f-display)}
 .reveal{animation:fadeup .5s ease both}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+/* ---- modo solo Primaria / ejemplo con todas las etapas ---- */
+.solo .only-full{display:none!important}
+.full .only-solo{display:none!important}
+.exbar{background:var(--lime);color:var(--lime-ink);font-size:.9rem;font-weight:700;text-align:center;padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px))}
+.exbar a{color:inherit;margin-left:8px}
+/* ---- imágenes ---- */
+.photos{display:grid;gap:12px;grid-template-columns:1.4fr 1fr 1fr;margin-top:44px}
+.ph{position:relative;margin:0;border-radius:22px;overflow:hidden;aspect-ratio:4/3;background:var(--sunk);max-width:100%}
+.photos .ph{aspect-ratio:auto;height:clamp(170px,20vw,250px)}
+.ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+.ph:hover img{transform:scale(1.03)}
+.ph figcaption{position:absolute;left:12px;bottom:12px;background:rgba(14,33,64,.72);color:#fff;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:6px 12px;border-radius:999px;font-size:.82rem;font-weight:700}
+@media (max-width:760px){.photos{grid-template-columns:1fr 1fr}.photos .ph{height:150px}.photos .ph:first-child{grid-column:1/-1;height:190px}}
+.banner-ph{border-radius:22px;overflow:hidden;height:clamp(150px,18vw,220px);max-width:100%;margin:0}
+.banner-ph img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* ---- acordeones: se abre para ver el detalle ---- */
+.acc{display:grid;gap:10px}
+.acc details{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.acc summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:14px;padding:16px 20px}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary .ai{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;flex:none;background:color-mix(in srgb,var(--secc,#D48A00) 14%,var(--surface));color:var(--secc2,#7A4A00);font-family:var(--f-display);font-weight:800}
+.acc summary b{font-family:var(--f-display);font-size:1.12rem;font-weight:800;display:block}
+.acc summary small{color:var(--muted);font-size:.9rem}
+.acc summary::after{content:"";margin-left:auto;width:10px;height:10px;border-right:2.5px solid var(--muted);border-bottom:2.5px solid var(--muted);transform:rotate(45deg);transition:transform .2s;flex:none}
+.acc details[open] summary::after{transform:rotate(-135deg)}
+.acc details>.in{padding:0 20px 20px}
+.acc details>.in>.card{border:0;padding:0}
+/* proyectos plegables */
+details.proj{display:block;padding:0}
+details.proj summary{list-style:none;cursor:pointer;display:flex;gap:14px;align-items:center;padding:16px 18px}
+details.proj summary::-webkit-details-marker{display:none}
+details.proj summary h3{font-size:1.08rem}
+details.proj summary small{display:block;color:var(--muted);font-size:.88rem;font-weight:400;font-family:var(--f-body,inherit)}
+details.proj .in{padding:0 18px 16px;display:grid;gap:10px}
+details.proj[open]{box-shadow:var(--shadow)}
+.ptease .proj{flex-direction:row;align-items:center;gap:12px}
+.ptease .proj h3{font-size:1rem}
 </style>
 </head><body>
+<div class="exbar only-full">Ejemplo: así podría quedar la web con todas las etapas de EF.<a href="./">Ver la web de Primaria</a></div>
 
 <header class="top">
   <div class="wrap">
@@ -768,20 +809,26 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
       <div>
         <div class="hero-k"><span id="heroDate"></span><span aria-hidden="true">·</span><span>Curso 2026-27</span></div>
         <h1><span class="bk">EF</span> i Esport<em>al Santiago</em></h1>
-        <p class="hero-sub">La Educación Física y el deporte del cole, <b>de Infantil al Grado Básico de FP</b>: tres etapas, tres profes y muchos proyectos para movernos más.</p>
+        <p class="hero-sub only-solo">La Educación Física y el deporte del cole, en un solo sitio.</p><p class="hero-sub only-full">La Educación Física y el deporte del cole, <b>de los 3 a los 17 años</b>.</p>
       </div>
       <div class="board" id="nowBoard" aria-live="polite"></div>
     </div>
   </div>
   <div class="wrap">
     <div class="doors">
-      <a class="door ef" href="#ef"><span class="dk">De 3 a 17 años</span><b>Educación Física</b><span class="dd">Infantil, Primaria, Secundaria y Grado Básico: qué hacemos en cada etapa.</span><span class="dgo">Entrar →</span></a>
-      <a class="door dep" href="#deporte"><span class="dk">En todo el cole</span><b>Deporte en el Santiago</b><span class="dd">Healthy, Zona Santiago, fútbol, Erasmus+… todo lo que se mueve en el cole.</span><span class="dgo">Descubrir →</span></a>
-      <a class="door sm jg" href="#juegos"><span class="dk" id="doorG">Juegos</span><b>Juegos</b><span class="dd">Con fichas y animaciones para jugar en el patio o en casa.</span><span class="dgo">Jugar →</span></a>
-      <a class="door sm fam" href="#familias"><span class="dk">Para casa</span><b>Familias</b><span class="dd">Horarios, qué traer y un reto saludable cada semana.</span><span class="dgo">Ver →</span></a>
+      <a class="door ef" href="#ef"><span class="dk"><span class="only-solo">De 1º a 6º</span><span class="only-full">De 3 a 17 años</span></span><b>Educación Física</b><span class="dgo">Entrar →</span></a>
+      <a class="door dep" href="#deporte"><span class="dk">En todo el cole</span><b>Deporte en el Santiago</b><span class="dgo">Descubrir →</span></a>
+      <a class="door sm jg" href="#juegos"><span class="dk" id="doorG">Juegos</span><b>Juegos</b><span class="dgo">Jugar →</span></a>
+      <a class="door sm fam" href="#familias"><span class="dk">Para casa</span><b>Familias</b><span class="dgo">Ver →</span></a>
     </div>
 
-    <div class="sec">
+    <div class="photos" aria-label="Imágenes">
+      <figure class="ph"><img src="img/cancha.svg" alt="Ilustración de la pista de la Zona Santiago"><figcaption>Zona Santiago</figcaption></figure>
+      <figure class="ph"><img src="img/patio.svg" alt="Ilustración de juegos en el patio"><figcaption>Patios activos</figcaption></figure>
+      <figure class="ph"><img src="img/pista.svg" alt="Ilustración de una pista de atletismo"><figcaption>Coleolimpiadas</figcaption></figure>
+    </div>
+
+    <div class="sec only-full">
       <div class="sec-head"><div><div class="eyebrow">De 3 a 17 años</div><h2>La Educación Física en el Santiago</h2></div><a class="btn" href="#ef">Conocer el área</a></div>
       <div class="stages" id="stagesHome"></div>
     </div>
@@ -804,8 +851,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
   <div class="depband">
     <div class="wrap">
       <div class="sec-head"><div><div class="eyebrow">Más allá de la clase de EF</div><h2>El deporte en el Santiago</h2></div><a class="btn lime" href="#deporte">Ver todos los proyectos</a></div>
-      <p class="dlead">El cole tiene muchos proyectos de deporte y salud abiertos al alumnado, a las familias y al barrio. Entra en cada uno para conocerlo.</p>
-      <div class="ptease" id="pTease"></div>
+            <div class="ptease" id="pTease"></div>
     </div>
   </div>
 </section>
@@ -814,7 +860,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
 <section class="view" id="v-ef">
   <div class="clhead">
     <div class="wrap">
-      <nav class="etabs" aria-label="Etapas"><a href="#infantil">Infantil</a><a href="#primaria">Primaria</a><a href="#eso">ESO y Grado Básico</a></nav>
+      <nav class="etabs only-full" aria-label="Etapas"><a href="#infantil">Infantil</a><a href="#primaria">Primaria</a><a href="#eso">ESO y Grado Básico</a></nav>
       <div class="eyebrow on-deep">Col·legi Diocesà Santiago Apòstol · Cabanyal</div>
       <h2>Educación Física en el Santiago</h2>
       <p class="clsub">De Infantil al Grado Básico de FP: la Educación Física acompaña al alumnado desde los 3 hasta los 17 años, con un profesor de referencia en cada etapa.</p>
@@ -836,7 +882,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
 <section class="view" id="v-etapa">
   <div class="clhead">
     <div class="wrap">
-      <nav class="etabs" aria-label="Etapas"><a href="#infantil">Infantil</a><a href="#primaria">Primaria</a><a href="#eso">ESO y Grado Básico</a></nav>
+      <nav class="etabs only-full" aria-label="Etapas"><a href="#infantil">Infantil</a><a href="#primaria">Primaria</a><a href="#eso">ESO y Grado Básico</a></nav>
       <div class="eyebrow on-deep" id="etEy"></div>
       <h2 id="etH"></h2>
       <p class="clsub" id="etSub"></p>
@@ -849,7 +895,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
 <section class="view" id="v-primaria">
   <div class="clhead">
     <div class="wrap">
-      <nav class="etabs" aria-label="Etapas"><a href="#infantil">Infantil</a><a href="#primaria">Primaria</a><a href="#eso">ESO y Grado Básico</a></nav>
+      <nav class="etabs only-full" aria-label="Etapas"><a href="#infantil">Infantil</a><a href="#primaria">Primaria</a><a href="#eso">ESO y Grado Básico</a></nav>
       <div class="eyebrow on-deep">Educación Física · Curso 2026-27</div>
       <h2>Primaria</h2>
       <p class="clsub" id="priProf"></p>
@@ -879,7 +925,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
     </div>
 
     <div class="sec" id="cl-retos">
-      <div class="sec-head"><div><div class="eyebrow">Un reto cada mes</div><h2 id="progH">Los retos del curso</h2></div><p>Cada mes trabajamos una situación de aprendizaje que termina con un producto final. Toca un reto para verlo entero.</p></div>
+      <div class="sec-head"><div><div class="eyebrow">Un reto cada mes</div><h2 id="progH">Los retos del curso</h2></div></div>
       <div class="salist" id="saList"></div>
     </div>
 
@@ -895,7 +941,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
         <div class="feature" id="coleo">
           <div class="rlbl" style="color:#fff;opacity:.85">Curso 25-26 · Evento entre colegios</div>
           <h3>Coleolimpiadas</h3>
-          <p>Jornada de atletismo en pista con otros colegios. Entramos dando la vuelta a la pista como en unas olimpiadas, con nuestro abanderado. Calentamiento con coreografía y circuito de pruebas por grupos, que termina con los relevos.</p>
+          <p>Jornada de atletismo con otros colegios, como unas olimpiadas.</p>
           <div class="pr"><span>Velocidad</span><span>Pista americana</span><span>Salto</span><span>Lanzamiento</span><span>Relevos mixtos 2 + 2</span></div>
           <a class="btn" href="#coleolimpiadas" style="justify-self:start;background:#fff;color:#0E2140;border-color:transparent">Ver las Coleolimpiadas →</a>
         </div>
@@ -909,8 +955,8 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
 <section class="view" id="v-deporte">
   <div class="wrap">
     <div class="sec">
-      <div class="sec-head"><div><div class="eyebrow">Col·legi Diocesà Santiago Apòstol · Cabanyal</div><h2>El deporte en el Santiago</h2></div></div>
-      <p class="lead">En el Santiago, la actividad física no termina al salir de clase de EF. Estos son los proyectos del cole relacionados con el deporte y la salud. Cada tarjeta enlaza con su página en la web del colegio.</p>
+      <div class="sec-head"><div><div class="eyebrow">Más allá de la clase de EF</div><h2>El deporte en el Santiago</h2></div></div>
+      <figure class="banner-ph"><img src="img/cancha.svg" alt="Ilustración de la pista de la Zona Santiago"></figure>
     </div>
     <div class="sec" style="padding-top:22px">
       <div class="projects" id="projects"></div>
@@ -955,84 +1001,48 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
       <span class="propuesta">Propuesta · pendiente de aprobar con el equipo directivo</span>
       <div class="eyebrow on-deep">Recreos con juego</div>
       <h2>Patios activos</h2>
-      <p class="clsub">Cada semana, un tema y varias estaciones de juego en el recreo: en la Zona Santiago para Primaria y en el patio de Infantil. Con dinamizadores, cajas de material y todo listo para montar y recoger en cinco minutos.</p>
-      <div class="seg" role="group" aria-label="Patio" id="ptSeg"><button data-pt="primaria" aria-pressed="true">Zona Santiago · Primaria</button><button data-pt="infantil" aria-pressed="false">Patio de Infantil</button></div>
+      <p class="clsub">Cada semana, un tema y varias estaciones de juego en el recreo.</p>
+      <div class="seg only-full" role="group" aria-label="Patio" id="ptSeg"><button data-pt="primaria" aria-pressed="true">Zona Santiago · Primaria</button><button data-pt="infantil" aria-pressed="false">Patio de Infantil</button></div>
     </div>
   </div>
   <div class="wrap">
     <div class="sec"><div class="ptnow" id="ptNow"></div></div>
     <div class="sec">
-      <div class="grid g2">
-        <div class="card" id="ptBoxes"></div>
-        <div class="card" id="ptRoles"></div>
-      </div>
-    </div>
-    <div class="sec">
-      <div class="sec-head"><div><div class="eyebrow">Aprendizaje-servicio · Propuesta</div><h2>Dinamizadores del patio</h2></div><p>El alumnado de 5º y 6º organiza los juegos del recreo para sus compañeros. Aprenden el juego en clase de EF y lo dinamizan en el patio: un servicio real al cole que también se evalúa.</p></div>
-      <div class="grid g2">
-        <div class="card">
-          <div class="eyebrow">Los roles</div><h3 style="font-size:1.3rem;margin:6px 0 10px">Quién hace qué</h3>
-          <div class="roles">
+      <div class="sec-head"><div><div class="eyebrow">Cómo funciona</div><h2>Todo lo de los patios</h2></div></div>
+      <div class="acc">
+      <details><summary><span class="ai">A</span><span><b>Material de esta semana</b><small>Las cajas que hay que preparar</small></span></summary><div class="in"><div class="card" id="ptBoxes"></div></div></details>
+      <details><summary><span class="ai">6º</span><span><b>Quién lo organiza</b><small>Encargados y cómo montar y recoger en 5 minutos</small></span></summary><div class="in"><div class="card" id="ptRoles"></div></div></details>
+      <details><summary><span class="ai">★</span><span><b>Dinamizadores del patio</b><small>5º y 6º organizan los juegos: aprendizaje-servicio</small></span></summary><div class="in"><div class="grid g2"><div><div class="eyebrow">Los roles</div><div class="roles">
             <div class="role"><span class="ri">1</span><span><b>Coordinador o coordinadora de estación</b><span>Dos por estación. Explican el juego con su ficha, lo ponen en marcha y animan a que todos jueguen.</span></span></div>
             <div class="role"><span class="ri">2</span><span><b>Árbitro de juego limpio</b><span>Uno por zona. Ayuda a resolver conflictos hablando y se asegura de que nadie se queda sin jugar.</span></span></div>
             <div class="role"><span class="ri">3</span><span><b>Encargado o encargada de material</b><span>Uno por caja. Saca la caja, monta la estación y comprueba la lista al recoger.</span></span></div>
             <div class="role"><span class="ri">4</span><span><b>Capitán o capitana del patio</b><span>Uno por día. Comprueba que todo está montado y avisa al profe de guardia si falta algo.</span></span></div>
           </div>
           <div class="eyebrow">Cómo se eligen</div>
-          <ul class="clean"><li>Se empieza con voluntarios y, a lo largo del trimestre, todo el alumnado de 5º y 6º pasa por todos los roles.</li><li>Los turnos se organizan por grupos y semanas según el horario de patios.</li><li>En la última sesión de EF de la semana anterior, los dinamizadores practican los juegos con sus fichas.</li></ul>
-        </div>
-        <div class="card">
-          <div class="eyebrow">Evaluación en EF</div><h3 style="font-size:1.3rem;margin:6px 0 10px">Rúbrica del dinamizador</h3>
-          <div class="tbl-wrap"><table class="doc-t" style="min-width:0"><thead><tr><th>Criterio</th><th>Qué observamos</th></tr></thead><tbody>
+          <ul class="clean"><li>Se empieza con voluntarios y, a lo largo del trimestre, todo el alumnado de 5º y 6º pasa por todos los roles.</li><li>Los turnos se organizan por grupos y semanas según el horario de patios.</li><li>En la última sesión de EF de la semana anterior, los dinamizadores practican los juegos con sus fichas.</li></ul></div><div><div class="eyebrow">Cómo se evalúa</div><div class="tbl-wrap"><table class="doc-t" style="min-width:0"><thead><tr><th>Criterio</th><th>Qué observamos</th></tr></thead><tbody>
             <tr><td class="code">Preparación</td><td>Conoce el juego, sus normas y el material antes del patio.</td></tr>
             <tr><td class="code">Explicación</td><td>Explica el juego con claridad y lo pone en marcha rápido.</td></tr>
             <tr><td class="code">Juego limpio</td><td>Anima a todos, incluye a quien está solo y ayuda a resolver conflictos.</td></tr>
             <tr><td class="code">Montaje y recogida</td><td>Monta su estación a tiempo y todo vuelve a la caja.</td></tr>
           </tbody></table></div>
-          <p class="muted" style="margin-top:10px">Cada criterio se valora de 1 a 4 en la autoevaluación del propio dinamizador, y la nota pasa a 0–10. Propuesta para decidir con el equipo directivo: que cuente en los indicadores de proceso de la situación de aprendizaje del mes, o como situación de aprendizaje-servicio propia en el tercer trimestre.</p>
-        </div>
-      </div>
-    </div>
-    <div class="sec">
-      <div class="sec-head"><div><div class="eyebrow">Al terminar su semana</div><h2>Autoevaluación del dinamizador</h2></div><p>Los propios dinamizadores se evalúan y opinan. Así participan en mejorar los patios y su trabajo cuenta en la nota de EF.</p></div>
-      <div class="grid g2">
-        <div class="card" style="display:grid;gap:12px;align-content:start">
-          <div class="eyebrow">Cómo funciona</div>
-          <ol class="steps">
+          <p class="muted" style="margin-top:10px">Cada criterio, de 1 a 4. La nota cuenta en EF.</p></div></div></div></details>
+      <details><summary><span class="ai">✓</span><span><b>Autoevaluación</b><small>Un formulario de 2 minutos al acabar su semana</small></span></summary><div class="in"><div class="grid g2"><div><ol class="steps">
             <li><span>Al terminar su semana, cada dinamizador rellena un formulario de 2 minutos con su cuenta del cole, desde el móvil, una tablet o el ordenador del aula.</span></li>
             <li><span>Se autoevalúa con los 4 criterios de la rúbrica, de 1 a 4.</span></li>
             <li><span>Opina: si le ha gustado, cuánto han participado sus compañeros, qué ha salido bien, qué cambiaría y qué juego propone.</span></li>
             <li><span>La nota (0–10) llega sola a la hoja del profe de EF, con un resumen por alumno y todas las opiniones juntas.</span></li>
-          </ol>
-          <span class="tag" style="justify-self:start">Formulario: disponible cuando se apruebe el proyecto</span>
-        </div>
-        <div class="card" style="display:grid;gap:8px;align-content:start">
-          <div class="eyebrow">Las preguntas</div>
-          <ul class="clean">
+          </ol><span class="tag" style="margin-top:10px;display:inline-block">Formulario: disponible cuando se apruebe el proyecto</span></div><div><div class="eyebrow">Las preguntas</div><ul class="clean">
             <li><b>Datos:</b> nombre, curso, semana, rol y estación o juego.</li>
             <li><b>Mi autoevaluación (cuenta para la nota):</b> preparación, explicación, juego limpio, y montaje y recogida.</li>
             <li><b>Mi compañero o compañera de estación</b> (opcional, no cuenta para su nota).</li>
             <li><b>¿Te ha gustado ser dinamizador?</b> y <b>¿cuánto han participado tus compañeros?</b></li>
             <li><b>¿Qué ha salido bien? ¿Qué cambiarías o mejorarías?</b></li>
             <li><b>¿Qué juego propones para otra semana? ¿Te gustaría repetir?</b></li>
-          </ul>
-        </div>
+          </ul></div></div></div></details>
+      <details><summary><span class="ai">⏱</span><span><b>Horario de patios</b><small>Quién juega, dónde y con quién</small></span></summary><div class="in"><p class="muted">Pendiente: en cuanto esté el horario de patios, aquí aparecerá cada día quién juega en la Zona Santiago, quién dinamiza y quién arbitra.</p></div></details>
+      <details><summary><span class="ai">→</span><span><b>Próximas semanas</b><small>Los temas que vienen</small></span></summary><div class="in"><div class="hrlist" id="ptNext"></div></div></details>
+      <details><summary><span class="ai">▦</span><span><b>Las cajas de los patios</b><small>Cada caja, su color y su lista</small></span></summary><div class="in"><div class="cajas" id="ptCajas"></div></div></details>
       </div>
-    </div>
-    <div class="sec">
-      <div class="card" style="display:grid;gap:10px">
-        <div class="eyebrow">Horario de patios · Pendiente</div>
-        <h3 style="font-size:1.3rem">Quién juega, dónde y con quién</h3>
-        <p class="muted">En cuanto tengamos el horario de patios (qué curso está en cada sitio cada día), aquí aparecerá cada día: qué grupo juega en la Zona Santiago, quién dinamiza cada estación, quién arbitra y qué profe está de guardia.</p>
-      </div>
-    </div>
-    <div class="sec">
-      <div class="sec-head"><div><div class="eyebrow">Para ir preparando</div><h2>Próximas semanas</h2></div></div>
-      <div class="hrlist" id="ptNext"></div>
-    </div>
-    <div class="sec">
-      <div class="sec-head"><div><div class="eyebrow">Material</div><h2>Las cajas de los patios</h2></div><p>Cada caja tiene un color. Su estación se marca con un cono del mismo color, y la lista sirve para comprobar que vuelve todo al recoger.</p></div>
-      <div class="cajas" id="ptCajas"></div>
     </div>
   </div>
 </section>
@@ -1043,7 +1053,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
     <div class="wrap">
       <div class="eyebrow on-deep">Curso 2026-27</div>
       <h2>Grandes citas</h2>
-      <p class="clsub">Los dos días más especiales del curso: el Día del Deporte, que celebra todo el cole, y las Coleolimpiadas, en las que 6º se junta con los colegios diocesanos.</p>
+      <p class="clsub">Los dos días más especiales del curso.</p>
     </div>
   </div>
   <div class="wrap"><div class="sec"><div class="citas big" id="citasAll"></div></div></div>
@@ -1054,9 +1064,9 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
   <div class="evhero dd">
     <div class="wrap">
       <a class="back" href="#citas">← Grandes citas</a>
-      <div class="eyebrow">Todo el cole · De Infantil al Grado Básico</div>
+      <div class="eyebrow">Todo el cole</div>
       <h2>Día del Deporte</h2>
-      <p>Un día oficial en el que todo el colegio celebra el deporte: alumnado, profesorado y familias, de los 3 a los 17 años.</p>
+      <p>Un día en el que todo el cole celebra el deporte.</p>
       <div class="evdate" id="ddDate"></div>
     </div>
   </div>
@@ -1067,7 +1077,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
           <div class="eyebrow">Programa del día</div><h3 style="font-size:1.35rem;margin:6px 0 10px">Qué haremos y a qué hora</h3>
           <div id="ddProg"></div>
         </div>
-        <div class="card">
+        <div class="card only-full">
           <div class="eyebrow">Organización</div><h3 style="font-size:1.35rem;margin:6px 0 10px">Cada etapa, su espacio</h3>
           <div id="ddEtapas"></div>
         </div>
@@ -1076,7 +1086,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
     <div class="sec">
       <div class="grid g2">
         <div class="card"><div class="eyebrow">Ese día</div><h3 style="font-size:1.25rem;margin:6px 0 8px">Qué hay que traer</h3><ul class="clean"><li>Ropa deportiva y zapatillas bien atadas.</li><li>Botella de agua con el nombre.</li><li>Gorra si hace sol.</li><li>Un almuerzo saludable: fruta, bocadillo o frutos secos.</li></ul></div>
-        <div class="card"><div class="eyebrow">Familias</div><h3 style="font-size:1.25rem;margin:6px 0 8px">¿Queréis colaborar?</h3><p class="muted">Cuando se acerque la fecha publicaremos aquí cómo pueden participar las familias. Si os apetece echar una mano, hablad con el profe de EF de vuestra etapa.</p></div>
+        <div class="card"><div class="eyebrow">Familias</div><h3 style="font-size:1.25rem;margin:6px 0 8px">¿Queréis colaborar?</h3><p class="muted">Lo publicaremos aquí cuando se acerque la fecha.</p></div>
       </div>
     </div>
   </div>
@@ -1089,18 +1099,19 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
       <a class="back" href="#citas">← Grandes citas</a>
       <div class="eyebrow">6º de Primaria · Colegios Diocesanos</div>
       <h2>Coleolimpiadas</h2>
-      <p>Cada año, el alumnado de 6º de los colegios diocesanos se reúne en las pistas de atletismo del río Turia para una gran jornada de atletismo. Las organiza la <a href="http://fundacioncolegiosdiocesanos.com/" target="_blank" rel="noopener" style="color:#fff;font-weight:700">Fundación de Colegios Diocesanos de Valencia</a>.</p>
+      <p>6º se junta con los colegios diocesanos en las pistas del río Turia. Las organiza la <a href="http://fundacioncolegiosdiocesanos.com/" target="_blank" rel="noopener" style="color:#fff;font-weight:700">Fundación de Colegios Diocesanos de Valencia</a>.</p>
       <div class="evdate" id="coDate"></div>
     </div>
   </div>
   <div class="wrap">
     <div class="sec">
+      <figure class="banner-ph" style="margin-bottom:22px"><img src="img/pista.svg" alt="Ilustración de una pista de atletismo"></figure>
       <div class="sec-head"><div><div class="eyebrow">Así es el día</div><h2>Como unas olimpiadas de verdad</h2></div></div>
       <ol class="evsteps">
-        <li><b>Desfile inaugural</b><span>Entramos dando la vuelta a la pista, como en unas olimpiadas, con nuestro abanderado.</span></li>
-        <li><b>Calentamiento</b><span>Todos los colegios juntos, con una coreografía.</span></li>
-        <li><b>Circuito de pruebas</b><span>Por grupos, pasando por todas las pruebas de atletismo.</span></li>
-        <li><b>Relevos</b><span>La jornada termina con los relevos mixtos, dos chicas y dos chicos por equipo.</span></li>
+        <li><b>Desfile inaugural</b><span>Con nuestro abanderado.</span></li>
+        <li><b>Calentamiento</b><span>Todos juntos, con coreografía.</span></li>
+        <li><b>Circuito de pruebas</b><span>Por grupos.</span></li>
+        <li><b>Relevos</b><span>Mixtos, 2 + 2.</span></li>
       </ol>
     </div>
     <div class="sec">
@@ -1108,7 +1119,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
         <div class="card"><div class="eyebrow">Las pruebas</div><h3 style="font-size:1.35rem;margin:6px 0 12px">Cinco pruebas de atletismo</h3>
           <div class="pruebas"><span>Velocidad</span><span>Pista americana</span><span>Salto</span><span>Lanzamiento</span><span>Relevos mixtos 2 + 2</span></div></div>
         <div class="card" style="display:grid;gap:10px;align-content:start"><div class="eyebrow">Cómo nos preparamos</div><h3 style="font-size:1.35rem">Entrenamos en clase de EF</h3>
-          <p class="muted">En mayo, 6º trabaja el atletismo en su situación de aprendizaje «Atletismo y retos de condición física»: velocidad, vallas, salto, lanzamiento y resistencia, con su propio pentatlón de clase.</p>
+          <p class="muted">En mayo, con el reto de atletismo de 6º.</p>
           <button class="btn primary" data-open="58" style="justify-self:start">Ver el reto de atletismo de 6º</button></div>
       </div>
     </div>
@@ -1123,7 +1134,7 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
   <div class="wrap">
     <div class="sec">
       <div class="sec-head"><div><div class="eyebrow">Para las familias</div><h2>EF en casa y en el cole</h2></div><div class="chips" id="famPick"></div></div>
-      <p class="lead">Elige el curso de tu hijo o hija para ver qué días tiene Educación Física, qué tiene que traer y qué está aprendiendo este mes.</p>
+      <p class="lead">Elige el curso de tu hijo o hija.</p>
     </div>
     <div class="sec" style="padding-top:22px">
       <div class="grid g2">
@@ -1131,13 +1142,13 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
           <div><div class="eyebrow" id="famDaysEy">Días de EF</div><h3 style="font-size:1.35rem;margin-top:6px" id="famDaysH">¿Qué días hay EF?</h3></div>
           <div class="week5" id="famWeek"></div>
           <div class="alert" id="famAlert"></div>
-          <p class="muted">Horario de octubre a mayo. En septiembre y junio el horario cambia y las sesiones duran 60 minutos.</p>
+          <p class="muted">De octubre a mayo. En septiembre y junio cambia.</p>
         </div>
         <div class="card" style="display:grid;gap:10px;align-content:start" id="famMonth"></div>
       </div>
     </div>
     <div class="sec" id="fam-retos">
-      <div class="sec-head"><div><div class="eyebrow">Cada semana, uno nuevo</div><h2>Retos saludables en familia</h2></div><p>Un reto sencillo cada semana para movernos más y cuidarnos en casa. Marcad los que vais consiguiendo: se guardan en este dispositivo.</p></div>
+      <div class="sec-head"><div><div class="eyebrow">Cada semana, uno nuevo</div><h2>Retos saludables en familia</h2></div></div>
       <div class="hreto" id="hrNow"></div>
       <div class="sec-head" style="margin:22px 0 12px"><div><div class="eyebrow">Para ir preparando</div><h3 style="font-size:1.3rem">Las próximas semanas</h3></div><span class="muted" id="hrCount"></span></div>
       <div class="hrlist" id="hrList"></div>
@@ -1145,18 +1156,19 @@ footer b{color:var(--on-deep);font-family:var(--f-display)}
     <div class="sec">
       <div class="sec-head"><div><div class="eyebrow">La mochila de EF</div><h2>Qué hay que traer</h2></div></div>
       <div class="kit">
-        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8l-8 6 4 8 4-2v20h20V20l4 2 4-8-8-6h-6a4 4 0 0 1-8 0z" fill="var(--sea)"/></svg><h4>Ropa deportiva</h4><p>Chándal o ropa cómoda y zapatillas deportivas bien atadas.</p></div>
-        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="16" y="4" width="16" height="6" rx="2" fill="var(--ink)"/><path d="M14 14q0-4 4-4h12q4 0 4 4v26q0 4-4 4H18q-4 0-4-4z" fill="var(--sea)" opacity=".85"/><rect x="18" y="22" width="12" height="10" rx="2" fill="var(--surface)" opacity=".7"/></svg><h4>Botella de agua</h4><p>Con su nombre. Bebemos al terminar y, con calor, también durante la clase.</p></div>
-        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18h32l-3 24H11z" fill="var(--c2)"/><path d="M17 18a7 7 0 0 1 14 0" stroke="var(--ink)" stroke-width="3" fill="none"/></svg><h4>Bolsa de aseo</h4><p>Para asearse después de clase. Los hábitos de aseo cuentan un 20 % en la nota de cada situación.</p></div>
-        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 30a16 14 0 0 1 32 0z" fill="var(--c1)"/><path d="M4 30h40v4H4z" fill="var(--ink)"/></svg><h4>Gorra en junio</h4><p>En los meses de calor: gorra, agua y buscar la sombra.</p></div>
+        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M14 8l-8 6 4 8 4-2v20h20V20l4 2 4-8-8-6h-6a4 4 0 0 1-8 0z" fill="var(--sea)"/></svg><h4>Ropa deportiva</h4><p>Y zapatillas bien atadas.</p></div>
+        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><rect x="16" y="4" width="16" height="6" rx="2" fill="var(--ink)"/><path d="M14 14q0-4 4-4h12q4 0 4 4v26q0 4-4 4H18q-4 0-4-4z" fill="var(--sea)" opacity=".85"/><rect x="18" y="22" width="12" height="10" rx="2" fill="var(--surface)" opacity=".7"/></svg><h4>Botella de agua</h4><p>Con su nombre.</p></div>
+        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18h32l-3 24H11z" fill="var(--c2)"/><path d="M17 18a7 7 0 0 1 14 0" stroke="var(--ink)" stroke-width="3" fill="none"/></svg><h4>Bolsa de aseo</h4><p>Para después de clase.</p></div>
+        <div class="card"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 30a16 14 0 0 1 32 0z" fill="var(--c1)"/><path d="M4 30h40v4H4z" fill="var(--ink)"/></svg><h4>Gorra en junio</h4><p>Con el calor.</p></div>
       </div>
     </div>
     <div class="sec">
-      <div class="grid g2">
-        <div class="card"><div class="eyebrow">Dónde hacemos EF</div><h3 style="font-size:1.25rem;margin:6px 0 8px">La terraza y la Zona Santiago</h3><p><b>1º y 2º</b> hacen EF en la terraza del cole. <b>De 3º a 6º</b> vamos a la pista de la Zona Santiago, con dos canastas. Vamos andando, en fila por parejas y pegados a la pared, y la ruta segura también se trabaja en clase.</p></div>
-        <div class="card"><div class="eyebrow">Cómo evaluamos</div><h3 style="font-size:1.25rem;margin:6px 0 8px">Más que correr rápido</h3><div class="weights" id="weights2"></div><p class="muted">Rúbrica del producto final 35 % · Indicadores de proceso 35 % · Hábitos de aseo (y actitud en 5º y 6º) 20 % · Autoevaluación 10 %. Se valora la mejora personal, no solo el resultado.</p></div>
-        <div class="card"><div class="eyebrow">Experiencia piloto en 4º</div><h3 style="font-size:1.25rem;margin:6px 0 8px">El test 3JS</h3><p>Este curso lo hemos probado en 4º: un recorrido de 7 tareas seguidas (saltos, giro, lanzamiento, golpeo con el pie, carrera en slalom, bote en slalom y conducción con el pie), cada una puntuada de 1 a 4. Se hace en septiembre y se repite en junio para ver cuánto ha mejorado cada niño o niña. La idea es hacerlo en todos los cursos a partir del curso que viene.</p></div>
-        <div class="card"><div class="eyebrow">Imagen y privacidad</div><h3 style="font-size:1.25rem;margin:6px 0 8px">Sin fotos del alumnado</h3><p>En esta web no aparecen fotos, vídeos ni datos del alumnado. Lo que hacemos en cada situación se comunica a las familias por la agenda o en tutoría.</p></div>
+      <div class="sec-head"><div><div class="eyebrow">Para saber más</div><h2>Preguntas frecuentes</h2></div></div>
+      <div class="acc">
+      <details><summary><span class="ai">⌖</span><span><b>¿Dónde hacemos EF?</b><small>La terraza y la Zona Santiago</small></span></summary><div class="in"><p><b>1º y 2º</b> en la terraza del cole. <b>De 3º a 6º</b> en la pista de la Zona Santiago. Vamos andando, en fila por parejas y pegados a la pared.</p></div></details>
+      <details><summary><span class="ai">%</span><span><b>¿Cómo evaluamos?</b><small>Más que correr rápido</small></span></summary><div class="in"><div class="weights" id="weights2"></div><p class="muted" style="margin-top:8px">Producto final 35 % · Proceso 35 % · Hábitos 20 % · Autoevaluación 10 %. Cuenta la mejora personal.</p></div></details>
+      <details><summary><span class="ai">3</span><span><b>¿Qué es el test 3JS?</b><small>Una prueba piloto en 4º</small></span></summary><div class="in"><p>Un recorrido de 7 tareas (saltos, giro, lanzamiento, golpeo, slalom, bote y conducción), cada una de 1 a 4. Se hace en septiembre y en junio para ver cuánto ha mejorado cada uno.</p></div></details>
+      <details><summary><span class="ai">◎</span><span><b>¿Salen fotos del alumnado?</b><small>No</small></span></summary><div class="in"><p>En esta web no hay fotos, vídeos ni datos del alumnado.</p></div></details>
       </div>
     </div>
   </div>
@@ -1351,7 +1363,7 @@ function stCap(){$('#stCap').innerHTML=[1,2,3,4,5,6].map(c=>`<button class="c-${
 function nowMin(){return NOW.getHours()*60+NOW.getMinutes()}
 function toMin(h){const[a,b]=h.split(':').map(Number);return a*60+b}
 // Horarios de las otras etapas (pendientes). Formato: {d:1..5 (lunes=1), h:'09:00', g:'2º ESO A', t:'Lo que se hace'}
-const HORARIOS={infantil:[],eso:[]};
+const HORARIOS=EF_FULL?{infantil:[],eso:[]}:{};
 function renderNow(){
   $('#heroDate').textContent=cap(longD(today));
   const items=f=>{const d=parse(f);const L=ALLSES.filter(x=>x.se.f===f).map(x=>({h:slotOf(f,x.s.c),et:'primaria',g:`${x.s.c}º Primaria`,t:shortT(x.se.t),open:x.s.i}));
@@ -1392,10 +1404,10 @@ function renderReto(){
   <div class="box"><div class="k">Sesión ${Math.min(done+1,sa.ses.length)} de ${sa.ses.length}</div><div class="dots">${sa.ses.map(x=>`<span class="dot ${x.f<TODAY?'done':x.f===TODAY?'now':''} ${x.fin?'fin':''}" title="S${x.s} · ${x.f.split('-').reverse().slice(0,2).join('/')}">${x.s}</span>`).join('')}</div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn lime" data-open="${sa.i}">Ver la situación completa</button></div></div></div>`;
 }
 const EVT=EVENTS.map(e=>({...e,sa:e.sa||''}));
-function evRow(e){const d=parse(e.f);const st=e.f<TODAY?'past':e.f===TODAY?'today':'';const s=SA.find(x=>x.c===e.c&&x.ses.some(se=>se.f===e.f))||SA.find(x=>x.c===e.c);
-  return `<div class="ev ${st} c-${e.c}"><div class="d"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b><small>${MN[d.getMonth()].slice(0,3)}</small></div><div style="min-width:0"><div class="tags"><span class="tag peto">${e.c}º Primaria</span>${e.k==='3js'?'<span class="tag sea">Test 3JS · piloto</span>':'<span class="tag">Producto final</span>'}${st==='past'?'<span class="tag done">Realizado</span>':''}</div><h4>${esc(e.t)}</h4><p>${fmt(e.k==='fin'?e.d:'Recorrido de 7 tareas de coordinación: saltos, giro, lanzamiento, golpeo, carrera, bote y conducción.')}</p></div><div class="rel"><button class="btn" data-open="${s.i}" style="padding:6px 10px;font-size:.82rem">${rel(e.f)}</button></div></div>`}
+function evRow(e,compact){const d=parse(e.f);const st=e.f<TODAY?'past':e.f===TODAY?'today':'';const s=SA.find(x=>x.c===e.c&&x.ses.some(se=>se.f===e.f))||SA.find(x=>x.c===e.c);
+  return `<div class="ev ${st} c-${e.c}"><div class="d"><small>${DIAS[d.getDay()].slice(0,3)}</small><b>${d.getDate()}</b><small>${MN[d.getMonth()].slice(0,3)}</small></div><div style="min-width:0"><div class="tags"><span class="tag peto">${e.c}º Primaria</span>${e.k==='3js'?'<span class="tag sea">Test 3JS · piloto</span>':'<span class="tag">Producto final</span>'}${st==='past'?'<span class="tag done">Realizado</span>':''}</div><h4>${esc(e.t)}</h4>${compact?'':`<p>${fmt(e.k==='fin'?e.d:'Recorrido de 7 tareas de coordinación: saltos, giro, lanzamiento, golpeo, carrera, bote y conducción.')}</p>`}</div><div class="rel"><button class="btn" data-open="${s.i}" style="padding:6px 10px;font-size:.82rem">${rel(e.f)}</button></div></div>`}
 function renderEvHome(){
-  $('#evNext').innerHTML=EVT.filter(e=>e.f>=TODAY).slice(0,4).map(evRow).join('')||'<p class="muted">No quedan eventos este curso.</p>';
+  $('#evNext').innerHTML=EVT.filter(e=>e.f>=TODAY).slice(0,3).map(e=>evRow(e,true)).join('')||'<p class="muted">No quedan eventos este curso.</p>';
 }
 
 /* ---------- PROGRAMACIÓN ---------- */
@@ -1455,7 +1467,7 @@ function renderCal(){
   $$('#evWhen button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.w===evW));
   let L=EVT.filter(e=>(!evC||e.c===evC)&&(evW==='all'||(evW==='next'?e.f>=TODAY:e.f<TODAY)));if(evW==='past')L=L.slice().reverse();
   const G={};L.forEach(e=>{const d=parse(e.f);const k=`${cap(MN[d.getMonth()])} ${d.getFullYear()}`;(G[k]=G[k]||[]).push(e)});
-  $('#evAll').innerHTML=Object.entries(G).map(([k,v])=>`<div class="mgroup"><h3>${k}<span>${v.length} ${v.length===1?'evento':'eventos'}</span></h3><div class="evlist">${v.map(evRow).join('')}</div></div>`).join('')||'<p class="muted" style="margin-top:20px">No hay eventos con este filtro.</p>';
+  $('#evAll').innerHTML=Object.entries(G).map(([k,v])=>`<div class="mgroup"><h3>${k}<span>${v.length} ${v.length===1?'evento':'eventos'}</span></h3><div class="evlist">${v.map(e=>evRow(e)).join('')}</div></div>`).join('')||'<p class="muted" style="margin-top:20px">No hay eventos con este filtro.</p>';
   $('#coleo').hidden=evW==='next';
 }
 $('#evWhen').addEventListener('click',e=>{const b=e.target.closest('[data-w]');if(b){evW=b.dataset.w;renderCal()}});
@@ -1464,7 +1476,7 @@ $('#evAllBtn').onclick=()=>{evAllC=!evAllC;renderCal()};
 /* ---------- JUEGOS ---------- */
 const TAGS=['Calentamiento','Cooperativo','Relevos','Balón y puntería','Atletismo y condición','Expresión y ritmo','Tradicional','Orientación','Acrosport','Otros juegos'];
 let gTag=null,gLimit=24,gAll=true,gEt='';
-const gEts=g=>['primaria',...Object.keys((typeof ADAPT!=='undefined'&&ADAPT[g.n])||{})].sort((a,b)=>Object.keys(ETAPAS).indexOf(a)-Object.keys(ETAPAS).indexOf(b));
+const gEts=g=>!EF_FULL?['primaria']:['primaria',...Object.keys((typeof ADAPT!=='undefined'&&ADAPT[g.n])||{})].sort((a,b)=>Object.keys(ETAPAS).indexOf(a)-Object.keys(ETAPAS).indexOf(b));
 const norm=s=>s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
 function gFiltered(){const q=norm($('#q').value.trim());return GAMES.filter(g=>(!gTag||(gTag==='__f'?!!FICHAS[g.n]:g.tg.includes(gTag)))&&(!gEt||gEts(g).includes(gEt))&&(gAll||gEt!=='primaria'||g.c.includes(curso))&&(!q||norm(g.n+' '+g.d).includes(q)))}
 function renderGames(){
@@ -1532,7 +1544,7 @@ const PROJ=[
    f:'Inscrita en el registro de entidades deportivas de la Comunitat Valenciana'},
   {n:'Salud Comunitaria',ic:'plus',pc:'var(--c3)',u:WEB+'/salud-comunitaria/',
    d:'Desde 2010: revisiones de dientes y de vista, programa de fruta, acompañamiento a visitas médicas y actividades con la Fundación Deportiva Municipal.',
-   f:''},
+   f:'Desde 2010'},
   {n:'Erasmus+ Deporte',ic:'hoop',pc:'var(--c1)',u:WEB+'/categoria/erasmus/ka210-sport/',
    d:'Dos proyectos europeos de deporte. STREETBALL4INCLUSION, coordinado por el cole: baloncesto 3x3 para la inclusión, con clubes de Italia y Alboraya. Sport and Creativity: con socios de Italia y Letonia, y encuentro de jugadores en València en octubre de 2026.',
    f:'2 proyectos con 3 países'}
@@ -1548,7 +1560,8 @@ const NEWS=[
   {f:'2024-12-06',t:'Evento final de STREETBALL4INCLUSION',u:WEB+'/blog/final-event-streetball4inclusion/'},
   {f:'2023-02-14',t:'El Proyecto Healthy avanza a paso ligero',u:WEB+'/blog/el-proyecto-healthy-avanza-a-paso-ligero/'}
 ];
-const projCard=(p,short)=>`<a class="proj" href="${p.u}" target="_blank" rel="noopener" style="--pc:${p.pc}"><div class="pk"><span class="pic">${IC[p.ic]}</span></div><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p>${!short&&p.f?`<div class="fact">${esc(p.f)}</div>`:''}<span class="go">${short?'Saber más':p.u.startsWith(WEB)?'Ver en la web del cole':'Ir a '+p.u.replace(/^https?:\/\/|\/$/g,'')} ↗</span></a>`;
+const projCard=(p,short)=>short?`<a class="proj" href="#deporte" style="--pc:${p.pc}"><span class="pic">${IC[p.ic]}</span><h3>${esc(p.n)}</h3></a>`:`<details class="proj" style="--pc:${p.pc}"><summary><span class="pic">${IC[p.ic]}</span><span><h3>${esc(p.n)}</h3>${p.f?`<small>${esc(p.f)}</small>`:''}</span></summary><div class="in"><p>${esc(p.d)}</p><a class="go" href="${p.u}" target="_blank" rel="noopener">${p.u.startsWith(WEB)?'Ver en la web del cole':'Ir a '+p.u.replace(/^https?:\/\/|\/$/g,'')} ↗</a></div></details>`;
+const projCardOld=(p,short)=>`<a class="proj" href="${p.u}" target="_blank" rel="noopener" style="--pc:${p.pc}"><div class="pk"><span class="pic">${IC[p.ic]}</span></div><h3>${esc(p.n)}</h3><p>${esc(p.d)}</p>${!short&&p.f?`<div class="fact">${esc(p.f)}</div>`:''}<span class="go">${short?'Saber más':p.u.startsWith(WEB)?'Ver en la web del cole':'Ir a '+p.u.replace(/^https?:\/\/|\/$/g,'')} ↗</span></a>`;
 const linkRow=(x,kind)=>{const d=parse(x.f);return `<a class="ev" href="${x.u}" target="_blank" rel="noopener"><div class="d"><small>${MN[d.getMonth()].slice(0,3)}</small><b>${d.getDate()}</b><small>${d.getFullYear()}</small></div><div style="min-width:0"><div class="tags"><span class="tag ${kind==='award'?'lime':'sea'}">${kind==='award'?'Premio':'Noticia'}</span></div><h4>${esc(x.t)}</h4></div><div class="rel" aria-hidden="true">↗</div></a>`};
 function renderDeporte(){
   $('#projects').innerHTML=PROJ.map(p=>projCard(p,false)).join('');
@@ -1660,7 +1673,7 @@ document.addEventListener('click',e=>{const b=e.target.closest('[data-jump]');if
 
 
 /* ---------- ETAPAS Y EQUIPO DE EF ---------- */
-const ETAPAS={
+const ETAPAS0={
   infantil:{n:'Infantil',area:'Psicomotricidad',edad:'3 a 6 años',cursos:'1º, 2º y 3º de Infantil',prof:'Vicente García',sc:'var(--c1)',ready:false,
     d:'Descubrir el propio cuerpo y moverse jugando: desplazamientos, equilibrio, saltos, juego simbólico y relación con los demás.',
     temas:['Conocer el cuerpo','Equilibrio y coordinación','Juego simbólico','Ritmo y expresión','Jugar con los demás']},
@@ -1670,13 +1683,14 @@ const ETAPAS={
     d:'Condición física y salud, deportes individuales y de equipo, expresión corporal y actividades en el medio natural, en la ESO y en el Ciclo Formativo de Grado Básico.',
     temas:['Condición física y salud','Deportes de equipo','Deportes individuales','Expresión corporal','Medio natural']},
 };
+const ETAPAS=EF_FULL?ETAPAS0:{primaria:ETAPAS0.primaria};
 const ini=n=>n.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
 const stageCard=(k,e)=>`<a class="stage-c" href="#${k}" style="--sc:${e.sc}"><span class="age">${e.edad}</span><h3>${e.n}</h3><span class="area">${e.area} · ${e.cursos}</span><p>${esc(e.d)}</p><span class="st ${e.ready?'ok':''}">${e.ready?'Sección completa':'Próximamente'}</span><span class="who"><span class="av">${ini(e.prof)}</span><span><b>${esc(e.prof)}</b><small>Profesor de ${e.area==='Psicomotricidad'?'Psicomotricidad':'EF'}</small></span></span></a>`;
 function renderStages(){
   const h=Object.entries(ETAPAS).map(([k,e])=>stageCard(k,e)).join('');$('#stagesHome').innerHTML=h;$('#stagesEf').innerHTML=h;
-  const T=[['Vicente García','Psicomotricidad en Infantil','var(--c1)'],['Héctor Calvo','Educación Física en Primaria','var(--c6)'],['David Martín','Educación Física en Secundaria y Grado Básico','var(--c5)']];
+  const T=[['Vicente García','Psicomotricidad en Infantil','var(--c1)'],['Héctor Calvo','Educación Física en Primaria','var(--c6)'],['David Martín','Educación Física en Secundaria y Grado Básico','var(--c5)']].filter(x=>EF_FULL||x[0]==='Héctor Calvo');
   $('#team').innerHTML=T.map(([n,r,c])=>`<div class="tm" style="--sc:${c}"><span class="av">${ini(n)}</span><span><b>${esc(n)}</b><span>${r}</span></span></div>`).join('');
-  $('#ftTeam').innerHTML=`<b>Equipo de EF</b><br>${T.map(([n,r])=>`${esc(n)} · ${r.replace('Educación Física en ','').replace('Psicomotricidad en ','')}`).join('<br>')}`;
+  $('#ftTeam').innerHTML=`<b>${EF_FULL?'Equipo de EF':'Profesor de EF'}</b><br>${T.map(([n,r])=>`${esc(n)} · ${r.replace('Educación Física en ','').replace('Psicomotricidad en ','')}`).join('<br>')}`;
   $('#priProf').textContent=`De 1º a 6º · Profesor: ${ETAPAS.primaria.prof}`;
 }
 function renderEtapa(k){
@@ -1764,8 +1778,8 @@ function renderPatios(){
    ${ptKey==='infantil'?'<p class="ptd" style="font-size:.95rem">Las fichas de los juegos de Infantil se preparan con Vicente García, profesor de Psicomotricidad.</p>':''}<div class="pests">${W.est.map((e,i)=>{const gi=gameIdx(e.n);const c=CAJAS[e.caja];return `<div class="pst"><span class="pn">${i+1}</span><b>${esc(e.n)}</b><p>${fmt(e.d)}</p><span class="cchip" style="--cc:${c.col}"><i>${e.caja}</i>Caja ${esc(c.n)}</span><span class="who">Dinamizan: 2 de ${din}</span>${ptKey==='primaria'&&typeof PF!=='undefined'&&PF[e.n]?`<button class="gbtn" data-pf="${esc(e.n)}">Ver la ficha y el vídeo →</button>`:ptKey==='primaria'&&FICHAS[e.n]&&gi>=0?`<button class="gbtn" data-gi="${gi}">Ver la ficha y el vídeo →</button>`:''}</div>`}).join('')}</div>`;
   $('#ptFull').onclick=()=>goFull(box);
   const used=[...new Set(W.est.map(e=>e.caja))];const dk=TODAY;
-  $('#ptBoxes').innerHTML=`<div class="eyebrow">Cajas de esta semana</div><h3 style="font-size:1.35rem;margin:6px 0 8px">Material para preparar</h3>`+used.map(k=>{const c=CAJAS[k];const st=x=>store.get(`pt.${dk}.${k}.${x}`,false);return `<div class="boxrow" style="--cc:${c.col}"><span class="bx">${k}</span><div><b>Caja ${esc(c.n)}</b><ul>${c.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="tgl"><button data-bx="${k}" data-st="prep" aria-pressed="${st('prep')}">Preparada hoy</button><button data-bx="${k}" data-st="rec" aria-pressed="${st('rec')}">Recogida hoy</button></div></div></div>`}).join('')+`<p class="muted" style="margin-top:8px">Las marcas se guardan solo en este dispositivo.</p>`;
-  $('#ptRoles').innerHTML=`<div class="eyebrow">Encargados</div><h3 style="font-size:1.35rem;margin:6px 0 4px">Esta semana dinamiza el alumnado de ${din}</h3>
+  $('#ptBoxes').innerHTML=used.map(k=>{const c=CAJAS[k];const st=x=>store.get(`pt.${dk}.${k}.${x}`,false);return `<div class="boxrow" style="--cc:${c.col}"><span class="bx">${k}</span><div><b>Caja ${esc(c.n)}</b><ul>${c.items.map(x=>`<li>${esc(x)}</li>`).join('')}</ul><div class="tgl"><button data-bx="${k}" data-st="prep" aria-pressed="${st('prep')}">Preparada hoy</button><button data-bx="${k}" data-st="rec" aria-pressed="${st('rec')}">Recogida hoy</button></div></div></div>`}).join('')+`<p class="muted" style="margin-top:8px">Las marcas se guardan solo en este dispositivo.</p>`;
+  $('#ptRoles').innerHTML=`<p style="margin-bottom:8px"><b>Esta semana dinamiza ${din}.</b></p>
    <div class="roles"><div class="role"><span class="ri">1</span><span><b>Dinamizadores de estación</b><span>Dos por estación. Explican el juego, lo ponen en marcha y animan a que todos jueguen.</span></span></div>
    <div class="role"><span class="ri">2</span><span><b>Encargados de caja</b><span>Uno por caja. Sacan la caja, montan la estación y comprueban la lista al recoger.</span></span></div>
    <div class="role"><span class="ri">3</span><span><b>Árbitro de juego limpio</b><span>Ayuda a resolver conflictos y se asegura de que nadie se queda sin jugar.</span></span></div></div>
@@ -1782,10 +1796,10 @@ $('#v-patios').addEventListener('click',e=>{const f=e.target.closest('[data-pf]'
    Para completar cuando se sepa: fecha ('2027-04-23'), lugar, programa [{h:'09:00',t:'Bienvenida en el patio'}] y actividades por etapa. */
 const CITAS={
   dd:{n:'Día del Deporte',k:'Todo el cole',hash:'dia-deporte',fecha:'2027-02-12',lugar:'',
-    d:'Un día oficial en el que todo el colegio, de Infantil al Grado Básico, celebra el deporte.',
+    d:'Todo el cole celebra el deporte.',
     programa:[],etapas:{infantil:'',primaria:'',eso:''}},
   co:{n:'Coleolimpiadas',k:'6º de Primaria · Colegios Diocesanos',hash:'coleolimpiadas',fecha:null,lugar:'Pistas de atletismo del río Turia',
-    d:'6º se reúne con los colegios de la Fundación de Colegios Diocesanos de Valencia en las pistas del río Turia para una jornada de atletismo.'}
+    d:'6º se junta con los colegios diocesanos para una jornada de atletismo.'}
 };
 const fechaTxt=c=>c.fecha?cap(longD(parse(c.fecha))):'Fecha por confirmar';
 const faltan=c=>{if(!c.fecha)return '';const n=dd(TODAY,c.fecha);return n>1?`<b>${n}</b>días`:n===1?'<b>¡Mañana!</b>':n===0?'<b>¡Hoy!</b>':'Ya lo celebramos'};
@@ -1848,7 +1862,7 @@ $('#semFull').onclick=()=>goFull($('#semStage'));
 $$('[data-sm]').forEach(b=>b.onclick=()=>{sm=b.dataset.sm;$$('[data-sm]').forEach(x=>x.setAttribute('aria-pressed',x===b));$('#semHint').textContent=sm==='sem'?'Verde: rápido · Ámbar: despacio · Rojo: bote en el sitio. Cambia solo cada 2 a 5 segundos.':'Corre al cono del color que sale en pantalla.';const f=(sm==='sem'?SEM:COLS)[0];light.textContent=f[0];light.style.setProperty('--lc',f[1])});
 
 /* ---------- ROUTER ---------- */
-const VIEWS=['inicio','ef','primaria','deporte','juegos','patios','citas','dia-deporte','coleolimpiadas','familias','profe'];const ALIAS={fpb:'eso',cfgb:'eso',clases:'primaria',semana:'primaria',calendario:'primaria',aula:'profe',programacion:'profe'};
+const VIEWS=['inicio','ef','primaria','deporte','juegos','patios','citas','dia-deporte','coleolimpiadas','familias','profe'];const ALIAS=EF_FULL?{fpb:'eso',cfgb:'eso',clases:'primaria',semana:'primaria',calendario:'primaria',aula:'profe',programacion:'profe'}:{ef:'primaria',infantil:'primaria',eso:'primaria',fpb:'primaria',cfgb:'primaria',clases:'primaria',semana:'primaria',calendario:'primaria',aula:'profe',programacion:'profe'};
 function route(){$('nav.tabs a[href="#ef"]')?.style.removeProperty('--tc');let h=location.hash.slice(1);if(ALIAS[h])h=ALIAS[h];let v=VIEWS.includes(h)?h:'inicio';if(ETAPAS[h]&&h!=='primaria'){v='etapa';renderEtapa(h)}const nv=(v==='primaria'||v==='etapa')?'ef':(v==='dia-deporte'||v==='coleolimpiadas')?'citas':v;$$('section.view').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$$('nav.tabs a').forEach(a=>{if(a.getAttribute('href')==='#'+nv)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});$$('.etabs a').forEach(a=>{if(a.getAttribute('href')==='#'+h)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});if(VIEWS.includes(h)||ETAPAS[h])window.scrollTo({top:0})}
 window.addEventListener('hashchange',route);
 function renderCourse(skipGames){stCap();renderReto();renderProg();renderFam();renderWeek();renderCal();if(!skipGames&&!gAll)renderGames()}
